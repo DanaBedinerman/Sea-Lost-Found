@@ -1,63 +1,32 @@
-import { Component, Input, } from '@angular/core';
-import { MouseEvent } from '@agm/core';
+import { Component, OnInit, } from '@angular/core';
+import { Point } from 'src/app/Models/point';
+import { Communication } from 'src/app/Services/communication.service';
+import { Lost } from 'src/app/Models/lost';
 
 @Component({
   selector: 'app-map-viewer',
   templateUrl: './map-viewer.component.html',
   styleUrls: ['./map-viewer.component.css']
 })
-export class MapViewerComponent {
+export class MapViewerComponent implements OnInit {
 
-  // google maps zoom level
-  public zoom = 8;
+  public zoom = 12;
 
-  // initial center position for the map
-  public lat = 51.673858;
-  public lng = 7.815982;
+  public history: Point[];
+  public currentLost: Lost = new Lost('', { latitude: 1, longitude: 1 }, 6000, 1);
 
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`)
+  constructor(private communication: Communication) {
   }
 
-  mapClicked($event: MouseEvent) {
-    this.markers.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      draggable: true
+  ngOnInit() {
+    this.communication.onNewHistory().subscribe(data => {
+      this.history = data;
+    });
+
+    this.communication.onNewLost().subscribe(data => {
+      this.currentLost = data;
     });
   }
-
-  markerDragEnd(m: marker, $event: MouseEvent) {
-    console.log('dragEnd', m, $event);
-  }
-
-  markers: marker[] = [
-    {
-      lat: 51.673858,
-      lng: 7.815982,
-      label: 'A',
-      draggable: true
-    },
-    {
-      lat: 51.373858,
-      lng: 7.215982,
-      label: 'B',
-      draggable: false
-    },
-    {
-      lat: 51.723858,
-      lng: 7.895982,
-      label: 'C',
-      draggable: true
-    }
-  ]
 }
 
-// just an interface for type safety.
-interface marker {
-  lat: number;
-  lng: number;
-  label?: string;
-  draggable: boolean;
-}
 

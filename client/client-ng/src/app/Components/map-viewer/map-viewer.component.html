@@ -1,31 +1,21 @@
 <agm-map 
-  [latitude]="lat"
-  [longitude]="lng"
+  [latitude]="currentLost.location.latitude" 
+  [longitude]="currentLost.location.longitude" 
   [zoom]="zoom"
-  [disableDefaultUI]="false"
-  [zoomControl]="false"
-  (mapClick)="mapClicked($event)">
+  [disableDefaultUI]="false">
 
-  <agm-marker 
-      *ngFor="let m of markers; let i = index"
-      (markerClick)="clickedMarker(m.label, i)"
-      [latitude]="m.lat"
-      [longitude]="m.lng"
-      [label]="m.label"
-      [markerDraggable]="m.draggable"
-      (dragEnd)="markerDragEnd(m, $event)">
-      
-    <agm-info-window>
-      <strong>InfoWindow content</strong>
-    </agm-info-window>
-    
-  </agm-marker>
-  
-  <agm-circle [latitude]="lat + 0.3" [longitude]="lng" 
-      [radius]="5000"
-      [fillColor]="'red'"
-      [circleDraggable]="true"
-      [editable]="true">
+  <agm-circle 
+    [latitude]="currentLost.location.latitude" 
+    [longitude]="currentLost.location.longitude" 
+    [radius]="currentLost.radius" 
+    [fillColor]="'red'">
   </agm-circle>
+
+  <agm-polyline>
+    <agm-polyline-point *ngFor="let point of history;"
+     [latitude]="point.latitude"
+     [longitude]="point.longitude">
+    </agm-polyline-point>
+  </agm-polyline>
 
 </agm-map>
