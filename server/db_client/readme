@@ -1,0 +1,3 @@
+this module responsible to db connections,
+
+listens for updates, and publish after setting the values in DB

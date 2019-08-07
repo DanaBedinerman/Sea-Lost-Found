@@ -1,0 +1,8 @@
+this module responsible for communication with clients
+
+1. Listen to POST req from the client
+2. Publish POST (updates) for entities
+
+3. Run timer for updates
+
+this module responsible for the begining of every cycle

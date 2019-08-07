@@ -1,0 +1,3 @@
+this module responsible for communication with API service
+
+listens to clients_notifier and publishes data back to it

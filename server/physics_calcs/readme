@@ -1,0 +1,5 @@
+This module should handle physics calcs.
+
+it gets all parameters needed from weather restAPI
+
+and sends it to the DB
