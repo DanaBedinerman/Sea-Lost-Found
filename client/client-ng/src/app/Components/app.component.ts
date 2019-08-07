@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Communication } from '../Services/communication.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client-ng';
+
+  constructor(communication : Communication){}
 }
