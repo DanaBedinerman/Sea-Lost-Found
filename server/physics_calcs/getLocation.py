@@ -9,7 +9,7 @@ def main():
     speed_ms = 472.05
     deltaTime = 1
     position = (32.583128426179705,35.17730425957495)
-    d = speed_ms*deltaTime
+    
     print("distance: " + d)
     radius = d * ERRORMARGIN
     print("radius: " + radius)
@@ -27,7 +27,8 @@ def getLocation(x1, y1, d, brng):
     
     return returnPos
 
-def getRadius(currentRadius):
+def getRadius(currentRadius, speed, deltaTime):
+    d = speed_ms*deltaTime
     return d * ERRORMARGIN
 
 
