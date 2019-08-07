@@ -13,7 +13,8 @@ export class MapViewerComponent implements OnInit {
   public zoom = 12;
 
   public history: Point[];
-  public currentLost: Lost = new Lost('', { latitude: 1, longitude: 1 }, 6000, 1);
+  public currentLost: Lost = new Lost('', { latitude: 1, longitude: 1 }, 400, 1);
+  public currentLosts : Point[];
 
   constructor(private communication: Communication) {
   }
@@ -25,6 +26,7 @@ export class MapViewerComponent implements OnInit {
 
     this.communication.onNewLost().subscribe(data => {
       this.currentLost = data;
+      this.currentLosts.push(new Point(this.currentLost.location.latitude, this.currentLost.location.longitude));
     });
   }
 }

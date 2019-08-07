@@ -7,15 +7,31 @@
   <agm-circle 
     [latitude]="currentLost.location.latitude" 
     [longitude]="currentLost.location.longitude" 
-    [radius]="currentLost.radius" 
+    [radius]="currentLost.radius"
     [fillColor]="'red'">
   </agm-circle>
 
   <agm-polyline>
     <agm-polyline-point *ngFor="let point of history;"
      [latitude]="point.latitude"
-     [longitude]="point.longitude">
+     [longitude]="point.longitude"
+     >
     </agm-polyline-point>
   </agm-polyline>
+
+  <div class="container">
+    <agm-circle *ngFor="let point of currentLosts;"
+      [latitude]="point.latitude" 
+      [longitude]="point.longitude" 
+      [radius]= 800 
+      [fillColor]="'green'">
+    </agm-circle>
+    <agm-polyline>
+      <agm-polyline-point *ngFor="let point of currentLosts;"
+      [latitude]="point.latitude"
+      [longitude]="point.longitude">
+      </agm-polyline-point>
+    </agm-polyline>
+  </div>
 
 </agm-map>
