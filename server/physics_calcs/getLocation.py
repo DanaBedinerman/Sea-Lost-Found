@@ -4,23 +4,14 @@ R = 6371009
 ERRORMARGIN = 4/100
 
 def main():
-    direction_d = 144
-    bearing = math.radians(direction_d)
-    speed_ms = 472.05
-    deltaTime = 1
-    position = (32.583128426179705,35.17730425957495)
-    
-    print("distance: " + d)
-    
-    print("radius: " + radius)
-    print("output: " + getLocation(math.radians(position[0]), math.radians(position[1]), d, bearing))
+    print(getLocationAndRadius(0, 0, 1000, 1000, 90, 1))
 
 def getLocationAndRadius(latitude, longitude, speed, deltaTime, bearing, currentRadius):
-    x1 = math.radians(x)
-    y1 = math.radians(y)
+    x1 = math.radians(latitude)
+    y1 = math.radians(longitude)
     brng = math.radians(bearing)
 
-    d = speed_ms*deltaTime
+    d = speed*deltaTime
     radius = d * ERRORMARGIN + currentRadius
     
     # where x is latitude,
