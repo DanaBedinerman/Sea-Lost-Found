@@ -6,7 +6,7 @@ import * as io from 'socket.io-client';
 })
 export class Communication {
 
-  private url = 'http://localhost:3000';
+  private url = 'http://localhost:8080';
   private socket;
 
   constructor() { 
