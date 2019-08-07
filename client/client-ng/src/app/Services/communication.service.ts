@@ -12,6 +12,7 @@ export class Communication {
 
   constructor() {
     this.socket = io(this.url);
+    //this.socket.emit('location',{})
   }
 
   onNewHistory() {
@@ -25,8 +26,8 @@ export class Communication {
   onNewLost() {
     return Observable.create(observer => {
       this.socket.on('objcet_location',
-        (id, location, raduis, angle) => {
-          observer.next(new Lost(id, location, raduis, angle));
+        data => {
+          observer.next(new Lost(data.id, data.location, data.raduis, data.angle));
         });
     });
   }
