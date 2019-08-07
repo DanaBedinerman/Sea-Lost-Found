@@ -27,6 +27,9 @@ def getLocation(x1, y1, d, brng):
     
     return returnPos
 
+def getRadius(currentRadius):
+    return d * ERRORMARGIN
+
 
 if __name__ == "__main__":
     main()
