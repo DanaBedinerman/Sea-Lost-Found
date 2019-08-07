@@ -12,8 +12,8 @@ async def get_location(sid, message):
     print("Socket ID: " , sid)
     print(message)
 
-def send_object_location(id, location):
-    sio.emit('objcet_location', { "id":id , "location": location })
+def send_object_location(id, location, raduis, angel):
+    sio.emit('objcet_location', { "id":id , "location": location, "raduis":raduis, "angle":angle })
 
 @sio.on('history')
 async def get_history(sid, message):
