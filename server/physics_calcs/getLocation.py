@@ -11,11 +11,18 @@ def main():
     position = (32.583128426179705,35.17730425957495)
     
     print("distance: " + d)
-    radius = d * ERRORMARGIN
+    
     print("radius: " + radius)
     print("output: " + getLocation(math.radians(position[0]), math.radians(position[1]), d, bearing))
 
-def getLocation(x1, y1, d, brng):
+def getLocationAndRadius(latitude, longitude, speed, deltaTime, bearing, currentRadius):
+    x1 = math.radians(x)
+    y1 = math.radians(y)
+    brng = math.radians(bearing)
+
+    d = speed_ms*deltaTime
+    radius = d * ERRORMARGIN + currentRadius
+    
     # where x is latitude,
     # y is longitude,
     # brng is the bearing (clockwise from north),
@@ -23,13 +30,13 @@ def getLocation(x1, y1, d, brng):
     x2 = math.asin( math.sin(x1)*math.cos(d/R) + math.cos(x1)*math.sin(d/R)*math.cos(brng) )
     y2 = y1 + math.atan2(math.sin(brng)*math.sin(d/R)*math.cos(x1), math.cos(d/R)-math.sin(x1)*math.sin(x2))
 
-    returnPos = (math.degrees(x2), math.degrees(y2))
+    res = {}
     
-    return returnPos
-
-def getRadius(currentRadius, speed, deltaTime):
-    d = speed_ms*deltaTime
-    return d * ERRORMARGIN
+    res["latitude"] = math.degrees(x2)
+    res["longitude"] = math.degrees(y2)
+    res["radius"] = radius
+    
+    return res
 
 
 if __name__ == "__main__":
