@@ -26,7 +26,7 @@ export class MapViewerComponent implements OnInit {
     });
 
     this.communication.onNewLost().subscribe(data => {
-      //console.log(data);
+      console.log(data);
       this.currentLost = data;
       this.currentLosts.push(new Point(this.currentLost.location.latitude, this.currentLost.location.longitude));
     });

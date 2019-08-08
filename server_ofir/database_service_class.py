@@ -2,7 +2,6 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 import datetime
 import json
-import pika
 
 
 def history_item_to_json(history_item):

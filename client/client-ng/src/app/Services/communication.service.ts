@@ -12,7 +12,8 @@ export class Communication {
 
   constructor() {
     this.socket = io(this.url);
-    //this.socket.emit('location',{})
+    console.log('location')
+    this.socket.emit('location',{})
   }
 
   onNewHistory() {
