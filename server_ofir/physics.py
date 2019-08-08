@@ -27,7 +27,7 @@ def getLocationAndRadius(latitude, longitude, speed, deltaTime, bearing, current
 
     res["latitude"] = math.degrees(x2)
     res["longitude"] = math.degrees(y2)
-    res["radius"] = radius
+    res["radius"] = 1
 
     return res
 

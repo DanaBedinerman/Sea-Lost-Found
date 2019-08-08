@@ -18,6 +18,7 @@ def get_data(time, params, location):
 
     # Get data from api, load it to json
     r = requests.get('{}/{}/{}/{}/{}'.format(url, time, params, location, 'json'))
+    print(r.text)
     data = json.loads(r.text)
 
     # Turning results to variables
